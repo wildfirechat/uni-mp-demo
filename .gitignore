@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+/project.config.json
+/.idea/
+/node_modules/
+/unpackage/
+/miniprogram_npm
+proto.min.js.map
