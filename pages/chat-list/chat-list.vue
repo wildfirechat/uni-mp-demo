@@ -175,9 +175,10 @@ export default {
         return item;
       });
       console.log('cl', clUi);
-      this.setData({
-        conversations: clUi
-      });
+      // this.setData({
+      //   conversations: clUi
+      // });
+	  this.conversations = clUi;
     }
 
   }

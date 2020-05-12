@@ -2,12 +2,13 @@
 <view>
 <template name="chat-item">
     <view class="chat-item-style" @longtap="onConversationLongTap" @tap="chatTo" :data-item="item" hover-class="press-style">
-        <block data-type="template" data-is="chat-item-head" data-attr="headUrl:item.ui.portrait,unread:item.ui.unread">
-    <view class="chat-item-head-super-style">
-        <image class="chat-head-style" :src="headUrl"></image>
-        <text v-if="unread>0" class="unread-style">{{unread<=99?unread:'99+'}}<>
-    </text></text></view>
-</block>
+        <block data-type="template" data-is="chat-item-head" data-attr={headUrl:item.ui.portrait,unread:item.ui.unread}>
+            <view class="chat-item-head-super-style">
+                <image class="chat-head-style" :src="headUrl"></image>
+                <!-- <text v-if="unread>0" class="unread-style">{{unread<=99?unread:'99+'}}</text> -->
+                <text v-if="unread>0" class="unread-style">{{unread}}</text>
+            </view>
+        </block>
         <view class="chat-item-content-super-style">
             <view class="chat-item-name-style">{{item.ui.title}}</view>
             <!-- <view class="chat-item-name-style">targetName</view> -->
@@ -19,8 +20,6 @@
         </view>
     </view>
     <view class="list-divide-line" style="width: 79.5%;margin-left: 20.5%"></view>
-</template>
-</view>
 </template>
 
 <style>
