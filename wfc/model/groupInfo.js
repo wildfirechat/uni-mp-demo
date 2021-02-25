@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020 WildFireChat. All rights reserved.
+ */
+
 import GroupType from "./groupType";
 
 /*
@@ -32,4 +36,10 @@ export default class GroupInfo {
 
     //是否可以搜索到该群，功能暂未实现
     searchable
+
+    //是否可以查看群历史消息, 0 不允许，1允许。仅专业版有效
+    historyMessage;
+
+    //群最大成员数。仅专业版有效
+    maxMemberCount;
 }

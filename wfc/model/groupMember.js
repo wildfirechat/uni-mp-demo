@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020 WildFireChat. All rights reserved.
+ */
+
 import wfc from '../client/wfc'
 export default class GroupMember {
     groupId = '';
@@ -5,6 +9,7 @@ export default class GroupMember {
     alias = '';
     type = 0;
     updateDt = 0;
+    createDt = 0;
 
     getName() {
         let u = wfc.getUserInfo(this.memberId);

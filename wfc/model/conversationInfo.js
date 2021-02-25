@@ -1,6 +1,11 @@
+/*
+ * Copyright (c) 2020 WildFireChat. All rights reserved.
+ */
+
 import Conversation from "./conversation";
 import Message from "../messages/message";
 import wfc from '../client/wfc'
+import {eq} from '../util/longUtil'
 
 import ConversationType from "./conversationType";
 
@@ -78,13 +83,21 @@ export default class ConversationInfo {
         let unreadCount1 = info1.unreadCount;
         let unreadCount2 = info2.unreadCount;
         if (unreadCount1.unread !== unreadCount2.unread
-            || unreadCount1.unreadMention === unreadCount2.unreadMention
-            || unreadCount1.unreadMentionAll === unreadCount2.unreadMentionAll) {
+            || unreadCount1.unreadMention !== unreadCount2.unreadMention
+            || unreadCount1.unreadMentionAll !== unreadCount2.unreadMentionAll) {
+            return false;
+        }
+
+        if((info1.lastMessage && !info2.lastMessage) || (!info1.lastMessage && info2.lastMessage)){
+            return false;
+        }
+
+        if(info1.lastMessage && info2.lastMessage && info1.lastMessage.messageId !== info2.lastMessage.messageId){
             return false;
         }
 
         // 其他的应当都会反应在timestamp上
-        return info1.timestamp === info2.timestamp && info1.draft === info2.draft;
+        return eq(info1.timestamp,info2.timestamp) && info1.draft === info2.draft;
 
     }
 }

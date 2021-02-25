@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020 WildFireChat. All rights reserved.
+ */
+
 import MessageContentMediaType from "./messageContentMediaType";
 import MediaMessageContent from "./mediaMessageContent";
 import MessageContentType from "./messageContentType";
@@ -9,7 +13,7 @@ export default class StickerMessageContent extends MediaMessageContent {
     width = 0;
     height = 0;
     constructor(filerOrLocalPath, remotePath, width, height) {
-        super(MessageContentType.Sticker, MessageContentMediaType.File, filerOrLocalPath, remotePath);
+        super(MessageContentType.Sticker, MessageContentMediaType.Sticker, filerOrLocalPath, remotePath);
         this.width = width;
         this.height = height;
     }

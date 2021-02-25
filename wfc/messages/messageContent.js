@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020 WildFireChat. All rights reserved.
+ */
+
 import MessagePayload from "./messagePayload";
 
 export default class MessageContent {
@@ -7,6 +11,7 @@ export default class MessageContent {
     //提醒对象，mentionedType 1时有效
     mentionedTargets = [];
     extra;
+    pushContent;
 
     constructor(type, mentionedType = 0, mentionedTargets = []) {
         this.type = type;
@@ -37,7 +42,14 @@ export default class MessageContent {
     decode(payload) {
         this.type = payload.type;
         this.mentionedType = payload.mentionedType;
-        this.mentionedTargets = payload.mentionedTargets;
+        if(payload.hasOwnProperty('mentionedTarget')){
+            // web
+        this.mentionedTargets = payload.mentionedTarget;
+        }else {
+            // pc
+            this.mentionedTargets = payload.mentionedTargets;
+        }
         this.extra = payload.extra;
+        this.pushContent = payload.pushContent;
     }
 }

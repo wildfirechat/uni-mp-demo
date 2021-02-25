@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020 WildFireChat. All rights reserved.
+ */
+
 import TextMessageContent from '../messages/textMessageContent'
 import PTextMessageContent from '../messages/ptextMessageContent'
 import ImageMessageContent from '../messages/imageMessageContent';
@@ -23,7 +27,16 @@ import StickerMessageContent from '../messages/stickerMessageContent';
 import SoundMessageContent from '../messages/soundMessageContent';
 import TypingMessageContent from '../messages/typingMessageContent';
 import RecallMessageNotification from '../messages/notification/recallMessageNotification';
+import DeleteMessageContent from '../messages/deleteMessageContent';
 
+import GroupJoinTypeNotificationContent from "../messages/notification/groupJoinTypeNotificationContent";
+import GroupMuteNotificationContent from "../messages/notification/groupMuteNotificationContent";
+import GroupSetManagerNotificationContent from "../messages/notification/groupSetManagerNotificationContent";
+import GroupPrivateChatNotificationContent from "../messages/notification/groupPrivateChatNotificationContent";
+import LocationMessageContent from "../messages/locationMessageContent";
+import MuteGroupMemberNotification from '../messages/notification/muteGroupMemberNotification'
+import AllowGroupMemberNotification from '../messages/notification/allowGroupMemberNotification'
+import CardMessageContent from '../messages/cardMessageContent'
 export default class MessageConfig {
     static getMessageContentClazz(type) {
         for (const content of MessageConfig.MessageContents) {
@@ -117,6 +130,7 @@ export default class MessageConfig {
             name: 'location',
             flag: PersistFlag.Persist_And_Count,
             type: MessageContentType.Location,
+            contentClazz:LocationMessageContent,
         },
         {
             name: 'file',
@@ -140,6 +154,12 @@ export default class MessageConfig {
             name: 'imageText',
             flag: PersistFlag.Persist_And_Count,
             type: MessageContentType.ImageText,
+        },
+        {
+            name: 'userCard',
+            flag: PersistFlag.Persist_And_Count,
+            type: MessageContentType.UserCard,
+            contentClazz: CardMessageContent,
         },
         {
             name: 'tip',
@@ -208,10 +228,52 @@ export default class MessageConfig {
             contentClazz: TransferGroupOwnerNotification,
         },
         {
+            name: 'groupJoinTypeNotificationContent',
+            flag: PersistFlag.Persist,
+            type: MessageContentType.ChangeJoinType_Notification,
+            contentClazz: GroupJoinTypeNotificationContent,
+        },
+        {
+            name: 'groupMuteNotificationContent',
+            flag: PersistFlag.Persist,
+            type: MessageContentType.MuteGroup_Notification,
+            contentClazz: GroupMuteNotificationContent,
+        },
+        {
+            name: 'groupPrivateChatNotificationContent',
+            flag: PersistFlag.Persist,
+            type: MessageContentType.ChangePrivateChat_Notification,
+            contentClazz: GroupPrivateChatNotificationContent,
+        },
+        {
+            name: 'groupSetManagerNotificationContent',
+            flag: PersistFlag.Persist,
+            type: MessageContentType.SetGroupManager_Notification,
+            contentClazz: GroupSetManagerNotificationContent,
+        },
+        {
+            name: 'muteGroupMemberNotificationContent',
+            flag: PersistFlag.Persist,
+            type: MessageContentType.MuteGroupMember_Notification,
+            contentClazz: MuteGroupMemberNotification,
+        },
+        {
+            name: 'allowGroupMemberNotificationContent',
+            flag: PersistFlag.Persist,
+            type: MessageContentType.AllowGroupMember_Notification,
+            contentClazz: AllowGroupMemberNotification,
+        },
+        {
             name: 'recall',
             flag: PersistFlag.Persist,
             type: MessageContentType.RecallMessage_Notification,
             contentClazz: RecallMessageNotification,
+        },
+        {
+            name: 'delete',
+            flag: PersistFlag.No_Persist,
+            type: MessageContentType.DeleteMessage_Notification,
+            contentClazz: DeleteMessageContent,
         },
     ];
 }

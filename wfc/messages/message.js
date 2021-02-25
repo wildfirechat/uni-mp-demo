@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020 WildFireChat. All rights reserved.
+ */
+
 /**
  * 
     message in json format
@@ -104,7 +108,7 @@ export default class Message {
             msg.content = obj.content;
             msg.messageUid = obj.messageId;
 
-            msg.timestamp = Number(obj.serverTimestamp);
+            msg.timestamp = obj.serverTimestamp;
             let contentClazz = MessageConfig.getMessageContentClazz(obj.content.type);
             if (contentClazz) {
                 let content = new contentClazz();

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020 WildFireChat. All rights reserved.
+ */
+
 export default class UserSettingScope {
     //不能直接使用，调用setConversation:silent:方法会使用到此值。
     static ConversationSilent = 1;
@@ -15,6 +19,8 @@ export default class UserSettingScope {
     static Listened_Channel = 9;
     static UserSettingPCOnline = 10;
     static UserSettingConversationReaded = 11;
+    static WebOnline = 12;
+    static DisableReceipt = 13;
 
 
     // 用户自定义的scope需从1000开始，以防冲突

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020 WildFireChat. All rights reserved.
+ */
+
 import GroupInfo from "./groupInfo";
 
 export default class GroupSearchResult {
@@ -10,7 +14,8 @@ export default class GroupSearchResult {
         let groupSearchResult = new GroupSearchResult();
         groupSearchResult.groupInfo = Object.assign(new GroupInfo(), obj.groupInfo)
         groupSearchResult.matchType = obj.marchedType;
-        groupSearchResult.matchMembers = obj.marchedMembers;
+        groupSearchResult.matchMembers = obj.marchedMemberNames;
+        return groupSearchResult;
 
     }
 }
