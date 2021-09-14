@@ -83,7 +83,7 @@ export default {
             if (loginResult.code === 0) {
               let userId = loginResult.result.userId;
               let token = loginResult.result.token;
-              wfc.connect(userId, token, 'ali');
+              wfc.connect(userId, token, 'uni');
               wx.switchTab({
                 url: '../chat-list/chat-list',
                 fail: e => {
